@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
 
@@ -25,12 +25,19 @@ import WorldcupMain from "./components/views/worldcup/WorldcupMain";
 // import FirebaseUpload from './components/views/firebase/uploadtest';
 import WorldcupVote from "./components/views/worldcup/vote/Vote";
 import WorldcupResult from "./components/views/worldcup/WorldcupResult";
+import Worldcupparticipation from "./components/views/worldcup/Worldcupparticipation";
 import VideoDetail from "./components/views/VideoDetail/VideoDetail";
 import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading";
 
 function App() {
   const temp = Auth(DanddaMain, null);
-  console.log(temp);
+  function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  useEffect(() => {
+    setScreenSize();
+  });
 
   return (
     <>
@@ -56,6 +63,7 @@ function App() {
           <Route exact={true} path="/firebase" element={<FirebaseTest />} />
           <Route exact={true} path="/mypage/:id" element={<Mypage />} />
           <Route exact={true} path="/worldcup" element={<WorldcupMain />} />
+          <Route exact={true} path="/worldcup/participation" element={<Worldcupparticipation />} />
           {/* <Route exact={true} path="/firebase/upload" element={<FirebaseUpload/>} /> */}
           <Route exact={true} path="/worldcup/vote" element={<WorldcupVote />} />
           <Route exact={true} path="/worldcup/vote/result" element={<WorldcupResult />} />
