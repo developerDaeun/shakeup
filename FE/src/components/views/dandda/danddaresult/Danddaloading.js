@@ -15,6 +15,7 @@ import * as tmPose from "@teachablemachine/pose";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { getFile } from "../../firebase/db";
+import { Typography } from "@material-ui/core";
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
 const override = css`
@@ -36,7 +37,7 @@ function Danddaloading() {
   const [maxPredictions, setMaxPredictions] = useState(null);
   const [animationFrame, setAnimationFrame] = useState(null);
   const [correctCount, setCorrectCount] = useState(0);
-
+  const [fade, setFade] = useState("fade-out");
   const videoRef = useRef();
 
   const navigate = useNavigate();
@@ -55,8 +56,39 @@ function Danddaloading() {
     m0c6 = false,
     m0c7 = false,
     m0c8 = false,
-    m0c9 = false;
+    m0c9 = false; // bounce
+  let m1c0 = false,
+    m1c1 = false,
+    m1c2 = false,
+    m1c3 = false,
+    m1c4 = false,
+    m1c5 = false,
+    m1c6 = false,
+    m1c7 = false,
+    m1c8 = false,
+    m1c9 = false,
+    m1c10 = false; // peaches
+  let m2c0 = false,
+    m2c1 = false,
+    m2c2 = false,
+    m2c3 = false,
+    m2c4 = false,
+    m2c5 = false,
+    m2c6 = false,
+    m2c7 = false; // Next Level
+  let m3c0 = false,
+    m3c1 = false,
+    m3c2 = false,
+    m3c3 = false,
+    m3c4 = false,
+    m3c5 = false,
+    m3c6 = false,
+    m3c7 = false,
+    m3c8 = false,
+    m3c9 = false,
+    m3c10 = false; // 스우파
   let URL;
+  let labelContainer;
 
   // 모델 URL 값이 세팅 되었을 때, 모델 로딩 함수 실행
   const getTurl = () => {
@@ -83,18 +115,13 @@ function Danddaloading() {
 
       setModel(model);
       setMaxPredictions(maxPredictions);
+      // 스우파 pose10 제거하므로 1개 클래스 뺌
+      if (turl === "https://teachablemachine.withgoogle.com/models/VDbRKik9o/")
+        setMaxPredictions(maxPredictions - 1);
       setIsModelLoading(false);
 
       console.log("모델 로딩 성공");
-      console.log("loadModel 함수의 turl : " + URL);
-
-      // // 클래스 개수만큼 div 추가
-      // let label = "";
-      // for (let i = 0; i < maxPredictions; i++) {
-      //   label += "<div></div>";
-      // }
-      //
-      // setLabels(label);
+      // console.log("loadModel 함수의 turl : " + URL);
     } catch (error) {
       console.log(error);
       setIsModelLoading(false);
@@ -111,7 +138,7 @@ function Danddaloading() {
       const data = snapshot.val();
       // console.log("videoUrl 전 : " + videoUrl);
       const videoUrl = await getFile(data);
-      console.log("videoUrl 후 : " + videoUrl);
+      // console.log("videoUrl 후 : " + videoUrl);
       setVideoURL(videoUrl);
     });
 
@@ -120,14 +147,13 @@ function Danddaloading() {
     onValue(turlTmp, async (snapshot) => {
       // console.log("turl 전 : " + data);
       const data = await snapshot.val();
-      console.log("turl 후 : " + data);
+      // console.log("turl 후 : " + data);
       setTurl(data);
     });
   };
 
   // 인식하기
   const identify = async () => {
-    const labelContainer = document.querySelector(".label-container");
     const { pose, posenetOutput } = await model.estimatePose(videoRef.current, false);
     const results = await model.predict(posenetOutput);
 
@@ -135,7 +161,7 @@ function Danddaloading() {
 
     // 경과 시간 구하기
     curTimeSeconds = new Date().getSeconds();
-    t = curTimeSeconds - startTimeSeconds;
+    t = curTimeSeconds - startTimeSeconds - 1;
 
     // 바운스
     if (turl === "https://teachablemachine.withgoogle.com/models/NuAS299xH/") {
@@ -159,8 +185,7 @@ function Danddaloading() {
               m0c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -178,8 +203,7 @@ function Danddaloading() {
               m0c1 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -191,8 +215,7 @@ function Danddaloading() {
               m0c2 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -209,8 +232,7 @@ function Danddaloading() {
               m0c3 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -222,8 +244,7 @@ function Danddaloading() {
               m0c4 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -235,8 +256,7 @@ function Danddaloading() {
               m0c5 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -248,8 +268,7 @@ function Danddaloading() {
               m0c6 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -261,8 +280,7 @@ function Danddaloading() {
               m0c7 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -274,8 +292,7 @@ function Danddaloading() {
               m0c8 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
@@ -287,13 +304,386 @@ function Danddaloading() {
               m0c9 = true;
               setCorrectCount(++cnt);
               // 맞았습니다 !! 표시
-              setTimeout((labelContainer.innerHTML = "맞았습니다 !!"), 3000);
-              labelContainer.innerHTML = "";
+              correct();
             }
           }
         }
       }
     }
+
+    // 피치스
+    if (turl === "https://teachablemachine.withgoogle.com/models/h3cg54y28/") {
+      for (let i = 0; i < maxPredictions; i++) {
+        // pose1
+        if (results[0].probability.toFixed(2) > 0.9) {
+          if (t >= 7 && t <= 9) {
+            if (!m1c0) {
+              console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose2
+        else if (results[1].probability.toFixed(2) > 0.9) {
+          if (t >= 8 && t <= 10) {
+            if (!m1c1) {
+              console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c1 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose3
+        else if (results[2].probability.toFixed(2) > 0.9) {
+          if (t >= 10 && t <= 12) {
+            if (!m1c2) {
+              console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c2 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose4
+        else if (results[3].probability.toFixed(2) > 0.9) {
+          if (t >= 13 && t <= 15) {
+            if (!m1c3) {
+              console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c3 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose5
+        else if (results[4].probability.toFixed(2) > 0.9) {
+          if (t >= 15 && t <= 17) {
+            if (!m1c4) {
+              console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c4 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose6
+        else if (results[5].probability.toFixed(2) > 0.9) {
+          if (t >= 18 && t <= 20) {
+            if (!m1c5) {
+              console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c5 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose7
+        else if (results[6].probability.toFixed(2) > 0.9) {
+          if (t >= 21 && t <= 23) {
+            if (!m1c6) {
+              console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c6 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose8
+        else if (results[7].probability.toFixed(2) > 0.9) {
+          if (t >= 24 && t <= 26) {
+            if (!m1c7) {
+              console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c7 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose9
+        else if (results[8].probability.toFixed(2) > 0.9) {
+          if (t >= 24 && t <= 27) {
+            if (!m1c8) {
+              console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c8 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose10
+        else if (results[9].probability.toFixed(2) > 0.9) {
+          if (t >= 26 && t <= 28) {
+            if (!m1c9) {
+              console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c9 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose11
+        else if (results[10].probability.toFixed(2) > 0.9) {
+          if (t >= 28 && t <= 30) {
+            if (!m1c10) {
+              console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
+              m1c10 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+      }
+    }
+
+    // Next Level
+    if (turl === "https://teachablemachine.withgoogle.com/models/BVupLxFSj/") {
+      for (let i = 0; i < maxPredictions; i++) {
+        // 디귿1
+        if (results[0].probability.toFixed(2) > 0.9) {
+          if (t >= 44 && t <= 47) {
+            if (!m2c0) {
+              console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // 디귿2
+        else if (results[1].probability.toFixed(2) > 0.9) {
+          if (t >= 49 && t <= 52) {
+            if (!m2c1) {
+              console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c1 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // 우우포즈
+        else if (results[2].probability.toFixed(2) > 0.9) {
+          if ((t >= 28 && t <= 30) || (t >= 36 && t <= 38)) {
+            if (!m2c2) {
+              console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c2 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // 감당포즈
+        else if (results[3].probability.toFixed(2) > 0.9) {
+          if (t >= 98 && t <= 100) {
+            if (!m2c3) {
+              console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c3 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // 새침포즈
+        else if (results[4].probability.toFixed(2) > 0.9) {
+          if (t >= 62 && t <= 64) {
+            if (!m2c4) {
+              console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c4 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // 뒤도는포즈
+        else if (results[5].probability.toFixed(2) > 0.9) {
+          if (t >= 62 && t <= 64) {
+            if (!m2c5) {
+              console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c5 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // 랄랄포즈
+        else if (results[6].probability.toFixed(2) > 0.9) {
+          if (t >= 69 && t <= 71) {
+            if (!m2c6) {
+              console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
+              m2c6 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+      }
+    }
+
+    // 스우파
+    if (turl === "https://teachablemachine.withgoogle.com/models/VDbRKik9o/") {
+      for (let i = 0; i < maxPredictions; i++) {
+        // pose1
+        if (results[0].probability.toFixed(2) > 0.9) {
+          if (t >= 2 && t <= 4) {
+            if (!m3c0) {
+              console.log(results[0].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c0 = true; // 반복문 안에서 setState 쓰면 리렌더링이 안되므로 쓰면 X
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose2
+        else if (results[1].probability.toFixed(2) > 0.9) {
+          if (t >= 11 && t <= 13) {
+            if (!m3c1) {
+              console.log(results[1].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c1 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose3
+        else if (results[2].probability.toFixed(2) > 0.9) {
+          if (t >= 15 && t <= 17) {
+            if (!m3c2) {
+              console.log(results[2].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c2 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose4
+        else if (results[3].probability.toFixed(2) > 0.9) {
+          if (t >= 20 && t <= 22) {
+            if (!m3c3) {
+              console.log(results[3].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c3 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose5
+        else if (results[4].probability.toFixed(2) > 0.9) {
+          if (t >= 29 && t <= 31) {
+            if (!m3c4) {
+              console.log(results[4].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c4 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose6
+        else if (results[5].probability.toFixed(2) > 0.9) {
+          if (t >= 33 && t <= 35) {
+            if (!m3c5) {
+              console.log(results[5].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c5 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose7
+        else if (results[6].probability.toFixed(2) > 0.9) {
+          if (t >= 39 && t <= 41) {
+            if (!m3c6) {
+              console.log(results[6].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c6 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose8
+        else if (results[7].probability.toFixed(2) > 0.9) {
+          if (t >= 41 && t <= 43) {
+            if (!m3c7) {
+              console.log(results[7].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c7 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose9
+        else if (results[8].probability.toFixed(2) > 0.9) {
+          if (t >= 53 && t <= 55) {
+            if (!m3c8) {
+              console.log(results[8].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c8 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+        // pose10 은 혼동되므로 제거
+        // else if (results[9].probability.toFixed(2) > 0.9) {
+        //   if (t >= 57 && t <= 59) {
+        //     if (!m3c9) {
+        //       console.log(results[9].className + " 인식 => 경과 시간 : " + t + "초");
+        //       m3c9 = true;
+        //       setCorrectCount(++cnt);
+        //       // 맞았습니다 !! 표시
+        //       correct();
+        //     }
+        //   }
+        // }
+        // pose11
+        else if (results[10].probability.toFixed(2) > 0.9) {
+          if (t >= 60 && t <= 62) {
+            if (!m3c10) {
+              console.log(results[10].className + " 인식 => 경과 시간 : " + t + "초");
+              m3c10 = true;
+              setCorrectCount(++cnt);
+              // 맞았습니다 !! 표시
+              correct();
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // 맞았습니다!! 표시 함수
+  const correct = () => {
+    labelContainer.innerHTML = "<Typography className={fade}>맞췄습니다 🔥</Typography>";
+    setTimeout(function () {
+      labelContainer.innerHTML = "";
+    }, 1500);
   };
 
   // 동영상 인식 반복 호출
@@ -305,6 +695,9 @@ function Danddaloading() {
   // loop 함수 호출하기 (이 함수는 한번만 실행, startTime을 구하기 위해 사용)
   const startLoop = () => {
     startTimeSeconds = new Date().getSeconds();
+
+    labelContainer = document.querySelector(".label-container");
+
     loop();
   };
 
@@ -312,7 +705,15 @@ function Danddaloading() {
   useEffect(() => {
     downloadFirebaseVideo();
   }, []);
-
+  useEffect(() => {
+    setTimeout(() => {
+      if (fade === "fade-in") {
+        setFade("fade-out");
+      } else {
+        setFade("fade-in");
+      }
+    }, 2000);
+  }, [correctCount]);
   // 모델 로딩중일 때
   if (isModelLoading) {
     return (
@@ -359,7 +760,8 @@ function Danddaloading() {
                 height="300"
                 crossOrigin="anonymous" // 이거 없으면 model.estimatePose 실행 안됨★
                 ref={videoRef}
-                // autoPlay
+                // autoplay
+                // muted
                 controls
                 onPlay={startLoop}
                 onEnded={() => myCallback()} // 비디오 끝나면 인식 멈춤
@@ -382,8 +784,10 @@ function Danddaloading() {
           {/* 몇 개 맞췄는지 결과 내기 */}
           {turl && (
             <div className="getTurl">
-              맞춘 동작 개수<br></br>
-              {correctCount} / {maxPredictions}
+              <Typography>맞춘 동작 개수</Typography>
+              <Typography>
+                {correctCount} / {maxPredictions}
+              </Typography>
               {getTurl()}
             </div>
           )}
