@@ -318,19 +318,19 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
  #### Backlog
 
-![image-20220218020858128](/uploads/b86f8e388d5136ccbb2ac1f05637517b/image-20220218020858128.png)
+![image](https://user-images.githubusercontent.com/38871826/154611303-35247974-1302-4738-8e19-2b624fa63860.png)
 
 
 
 #### Active Sprints
 
- ![image-20220218020607121](/uploads/335a6a379c4bc6d8f61790e8f40166e2/image-20220218020607121.png)
+![image](https://user-images.githubusercontent.com/38871826/154611346-059a4c8b-cd47-4219-8954-a0d4a9e2bffd.png)
 
 
 
 #### Burndown Chart
 
-![image-20220218022001224](/uploads/e57f5ae7d1453c3d8db6c8c8208a1e69/image-20220218022001224.png)
+![image](https://user-images.githubusercontent.com/38871826/154611372-0786af56-e022-4329-89fb-7b71be49ea80.png)
 
 
 
@@ -340,7 +340,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218022910131](/uploads/c0f369f07c3c6ca429e4c713447f68c4/image-20220218022910131.png)
+  ![image](https://user-images.githubusercontent.com/38871826/154611395-b3dfae41-393d-407c-bd4c-95652c34510d.png)
 
 
 
@@ -350,7 +350,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218023123208](/uploads/a2215bdbf19e440bb4faa554d1f6d2ae/image-20220218023123208.png)
+  ![image](https://user-images.githubusercontent.com/38871826/154611406-ed8c18ab-bc86-41af-bc08-01782b501ef9.png)
 
 
 
@@ -360,7 +360,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218024317812](/uploads/952ed5944d9e3e7c0fa8c98bc26d7be2/image-20220218024317812.png)
+  ![image](https://user-images.githubusercontent.com/38871826/154611423-7bcb63b3-307f-48c0-b860-7994304d851f.png)
 
 
 
@@ -370,7 +370,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218023915856](/uploads/499d42d4284b4fb2fce22cdf8480e6fd/image-20220218023915856.png)
+  ![image](https://user-images.githubusercontent.com/38871826/154611440-c1389ba6-dc66-40b8-803b-fce88f6cfeca.png)
 
 
 
@@ -380,7 +380,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image-20220218024630294](/uploads/10a78f85cf243ae53fa22b3b151b1aea/image-20220218024630294.png)
+  ![image](https://user-images.githubusercontent.com/38871826/154611451-9a8db929-f860-4a8a-bd0e-b8064bc607d8.png)
 
 
 
