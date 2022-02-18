@@ -65,11 +65,7 @@ __Shake Up__ 에서 함께 춤을 즐겨보세요!
 
 
 #### 🖼와이어프레임
-
-- [Shake_Up_와이어프레임.xd](/uploads/f54a700f6d0c57890a22386027b1d368/Shake_Up_와이어프레임.xd)  
-
   
-
    ![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/467a8747-5870-4d2a-9232-36527a2bba06/xd1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220217T174725Z&X-Amz-Expires=86400&X-Amz-Signature=60640d12e6dddac8ba7434ac1cbc959fb69ecdf119ade31d1612ae59f7e0151f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22xd1.PNG.png%22&x-id=GetObject)
 
    ![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4c361946-2b56-4fab-9af6-38dca7523a52/xd2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220217T174752Z&X-Amz-Expires=86400&X-Amz-Signature=8ec944db772d6ba64329ff909c75d8f85266fa316455faeb0d01e81ac4865183&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22xd2.PNG.png%22&x-id=GetObject)
@@ -525,8 +521,8 @@ __최성석__
 
 
 ## 발표 자료
-[PPT](C:\ssafy\PJT\Sub_PJT_2_3\github\공통PJT_구미_1반_3팀_최종발표.pptx)
-[PDF](C:\ssafy\PJT\Sub_PJT_2_3\github\공통PJT_구미_1반_3팀_최종발표.pdf)
+[PPT](C:\ssafy\PJT\Sub_PJT_2_3\github\발표자료\공통PJT_구미_1반_3팀_최종발표.pptx)
+[PDF](C:\ssafy\PJT\Sub_PJT_2_3\github\발표자료\공통PJT_구미_1반_3팀_최종발표.pdf)
 
 
 ## 📌문의
