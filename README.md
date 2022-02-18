@@ -521,8 +521,7 @@ __최성석__
 
 
 ## 발표 자료
-[PPT](https://github.com/developerDaeun/shakeup\발표자료\구미_1반_D103_발표자료.pptx)
-[PDF](https://github.com/developerDaeun/shakeup\발표자료\구미_1반_D103_발표자료.pdf)
+[PDF](https://github.com/developerDaeun/shakeup\구미_1반_D103_발표자료.pdf)
 
 
 ## 📌문의
