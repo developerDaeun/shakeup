@@ -521,8 +521,8 @@ __최성석__
 
 
 ## 발표 자료
-[PPT](C:\ssafy\PJT\Sub_PJT_2_3\github\발표자료\공통PJT_구미_1반_3팀_최종발표.pptx)
-[PDF](C:\ssafy\PJT\Sub_PJT_2_3\github\발표자료\공통PJT_구미_1반_3팀_최종발표.pdf)
+[PPT](https://github.com/developerDaeun/shakeup\발표자료\구미_1반_D103_발표자료.pptx)
+[PDF](https://github.com/developerDaeun/shakeup\발표자료\구미_1반_D103_발표자료.pdf)
 
 
 ## 📌문의
