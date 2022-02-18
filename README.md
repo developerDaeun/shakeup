@@ -230,7 +230,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 #### Tensorflow.js
 
-- Pose Detection을 통한 춤 동작 인식
+- PoseNet을 통한 춤 동작 인식
 
   - [PoseNet 이란?](https://www.notion.so/PoseNet-c87bc00c193e4d31adff76945af9a36f)
 
@@ -387,8 +387,8 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 
 ## 🌈ERD
-    ![ERD](https://user-images.githubusercontent.com/38871826/154610053-ab975c77-693f-4165-ae61-963a0d9c6202.png)
 
+  ![ERD](https://user-images.githubusercontent.com/38871826/154611776-d4737840-7a62-41b6-8b1d-fa83bf2ad600.png)
 
 
 
