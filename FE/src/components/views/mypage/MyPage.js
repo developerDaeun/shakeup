@@ -11,7 +11,6 @@ import Board4 from './board/Board4'
 import Board5 from './board/Board5'
 import { UserContext } from '../../../App'
 import { makeStyles } from '@material-ui/core';
-import { flexbox } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +21,13 @@ const useStyles = makeStyles((theme) => ({
   user: {
     display: 'flex',
     justifyContent: 'flex-end',
+    marginLeft: '15px'
   },
   Btn: {
     variant: "contained"
+  },
+  follow: {
+    marginLeft: 'auto',
   }
 }))
 function MyPage() {
@@ -33,7 +36,7 @@ function MyPage() {
   const [user, setUser] = useState({})
   const { auth } = useContext(UserContext)
   const [following, setFollowing] = useState(false)
-
+  const userId = localStorage.getItem('UserId')
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -82,21 +85,20 @@ function MyPage() {
   useEffect( async () => {
     await getUser();
     await isFollow();
-  }, []); 
+  }, [id]); 
   
   const classes = useStyles();
   return (
     <div className='mypage'>
       <div className='user'>
         <img src={user.profile} />
-        <div >
-          <Typography>{user.name}</Typography>
-          <Typography>{user.email}</Typography>
-          <Typography>구독자수</Typography>
+        <div className={classes.user}>
+          <Typography style={{fontWeight: 900}}>{user.name}</Typography>
+          <Typography>님의 마이페이지</Typography>
         </div>
-        {auth.id === id ?
+        {userId === id ?
           <></> : 
-          <div>
+          <div className={classes.follow}>
           {following ? 
             <Button onClick={unfollowHandler} variant='contained'>팔로우 취소</Button>
             : <Button onClick={followHandler} variant='contained'>팔로우</Button>
@@ -112,16 +114,16 @@ function MyPage() {
           > 
             <Tab label='댄따' {...a11yProps(0)} />
             <Tab label="월드컵" {...a11yProps(1)} />
-            <Tab label="업로드영상" {...a11yProps(2)} />
+            <Tab label="업로드" {...a11yProps(2)} />
             <Tab label="구독" {...a11yProps(3)} />
-            <Tab label="좋아요영상" {...a11yProps(4)} />
+            <Tab label="좋아요" {...a11yProps(4)} />
           </Tabs>
         </div>
         <TabPanel value={value} index={0}>
-          <Board1 user={user}/>
+          <Board1 id={id}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Board2 user={user} />
+          <Board2 id={id} />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Board3 user= {user}/>

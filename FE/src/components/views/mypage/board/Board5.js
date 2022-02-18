@@ -17,7 +17,9 @@ function Board5({user}) {
     <div>
       {videos.map((item, index) => {
         return (
-          <Video data={item} key={index}/>
+          <>
+            <Video data={item} key={index}/>
+          </>
         );
       })}
     </div>

@@ -19,10 +19,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -53,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //하단바 숨기기
+        getWindow().getDecorView().getWindowInsetsController().hide(WindowInsets.Type.navigationBars());
+
         setContentView(R.layout.activity_main);
 //        setContentView(R.layout.camera_test);
         mContext = this.getApplicationContext();
@@ -61,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();   //타이틀바 숨기기
 
-        mwv=(WebView)findViewById(R.id.activity_main_webview);
+        mwv = (WebView) findViewById(R.id.activity_main_webview);
         mwv.addJavascriptInterface(new WebAppInterface(this), "Android");
-        WebSettings mws=mwv.getSettings();//Mobile Web Setting
+        WebSettings mws = mwv.getSettings();//Mobile Web Setting
         mws.setDomStorageEnabled(true);
         mws.setLoadWithOverviewMode(true);//컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
         // Javascript 사용하기
@@ -105,23 +113,14 @@ public class MainActivity extends AppCompatActivity {
         // 캐쉬 사용 방법을 정의
         mws.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mwv.clearCache(true);
-        mwv.loadUrl("http://119.202.146.251/");
+        getWindow().getDecorView().getWindowInsetsController().hide(WindowInsets.Type.navigationBars());
+        mwv.loadUrl("http://i6d103.p.ssafy.io/");
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 
-//    private class WebViewClientClass extends WebViewClient {
-//
-//        @Override
-//        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-//            super.onPageStarted(view, url, favicon);
-//        }
-//
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//            Toast t = Toast.makeText(MainActivity.this, "작동!", Toast.LENGTH_SHORT);
-//            t.show();
-//            return true;
-//        }
-//    }
 
 
     public class WebAppInterface {
@@ -134,13 +133,14 @@ public class MainActivity extends AppCompatActivity {
 
         /** Show a toast from the web page */
         @JavascriptInterface
-        public void showToast(String url, String modelUrl) {
+        public void showToast(String url, String modelUrl, String vid) {
             //토스트 메시지 보여주기
-            Toast.makeText(mContext, modelUrl , Toast.LENGTH_LONG).show();
+//            Toast.makeText(mContext, modelUrl , Toast.LENGTH_LONG).show();
             //카메라 실행
             Intent intent = new Intent(MainActivity.this, CAMERA2_Activity.class);
             intent.putExtra("동영상링크",url);
             intent.putExtra("모델링크",modelUrl);
+            intent.putExtra("비디오아이디",vid);
             startActivityResult.launch(intent);
         }
 
@@ -161,28 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-
-
     }
-
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 0) {
-//            if (resultCode == RESULT_OK) {
-//                Toast.makeText(mContext, "로딩 페이지 작동 성공", Toast.LENGTH_LONG).show();
-//                mwv.loadUrl("javascript:loadingPage()");
-//            } else {
-//                Toast.makeText(mContext, "로딩 페이지 작동 실패", Toast.LENGTH_LONG).show();
-//            }
-//        } else {
-//            Toast.makeText(mContext, "requestCode가 0이 아님 [ " + requestCode + " ]", Toast.LENGTH_LONG).show();
-//        }
-//    }
-
 
 
 

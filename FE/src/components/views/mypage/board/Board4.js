@@ -9,7 +9,8 @@ function Board4({user}) {
   const getVideos = () => {
     axios.get(`/sub/read/follow/${user.uid}`)
     .then(res => {
-      setVideos(res.data)
+      const FV = res.data.map(item => item.video)
+      setVideos(FV)
     })
     .catch(err =>{
       console.log(err)
@@ -23,7 +24,9 @@ function Board4({user}) {
     <div>
       {videos.map((item, index) => {
         return (
-          <Video data={item} key={index} />
+          <>
+            <Video data={item} key={index} />
+          </>
         );
       })}
     </div>

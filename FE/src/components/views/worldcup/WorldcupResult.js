@@ -18,9 +18,6 @@ function WorldcupResult(props) {
     })
   }, [])
 
-  const location = useLocation(); 
-  const {vid} = location.state
-
   return (
     <div style={{
       display: 'flex', 
@@ -46,7 +43,8 @@ function WorldcupResult(props) {
           <td>{index+1}</td>
           <td>{ranker.videos2.users.name}</td>
           <td>{ranker.videos2.title}</td>
-          <td>{(ranker.rate).toFixed(0)}%</td>
+          {ranker.rate ? (<td>{Math.round(ranker.rate)}%</td>) : (<td>{ranker.rate}%</td>)}
+          {/* <td>{(ranker.rate).toFixed(0)}%</td> */}
           </tr>
         ))}        
       </table>

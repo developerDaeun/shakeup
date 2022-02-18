@@ -6,32 +6,36 @@ import { deleteFile } from '../../firebase/db';
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    border:'1px solid black',
-    padding:'5px'
+    padding:'10px',
+    borderRadius: '20px',
+    marginBottom: '20px',
+    boxShadow: '0px 0px 5px gray',
+    backgroundColor: '#EEEEEE',
   },
   video: {
-    width: '200px',
     display: 'flex',
+    borderRadius: '20px',
     justifyContent: 'center',
-    zIndex: -1
+    overflow: 'hidden',
+    margin: '10px',
   },
   title: {
+    fontWeight: '',
+
   },
   subtitle: {
   },
   icon : {
     marginTop: '3px',
-    zIndex: 1
   }
 }))
 
 function Video({data, propFunction, index}) {
   const [dialog, setDialog] = useState(false)
-  const {vid, uid, title, likecnt, views, url, score} = data
+  const {vid, uid, title, likecnt, views, url, score, thumbnail} = data
   const userId = localStorage.getItem('userId')
   const deleteVideo = () => {
     try {
@@ -62,16 +66,15 @@ function Video({data, propFunction, index}) {
   return (
     <div className={classes.root} >
       <div className={classes.video} >
-        <video src={url} />
+        <video 
+          src={url} 
+          controls
+          style={{objectFit:'fill', width:'100%', textAlign:'center'}}/>
       </div>
       <div className={classes.title}>
-        <span>{title}</span>
+        <h4>{title}</h4>
       </div>
       <div className={classes.subtitle}>
-        <span>{vid}</span>
-        <span>조회수 {views}</span>
-        <span>좋아요 {likecnt}</span>
-        <span>성공동작 {score}</span>
         {
           uid === userId ? 
           <DeleteIcon className={classes.icon} onClick={onOpen}/>

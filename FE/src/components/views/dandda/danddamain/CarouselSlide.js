@@ -45,32 +45,25 @@ export default function CarouselSlide(props) {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  // Android Studio의 [showToast] 함수 실행
   const movecamera = () => {
-    // uploadModelUrl
-    // const database = getDatabase();
-
-    // set(ref(database), {
-    //   message: "", // 안드로이드에서 녹화한 영상이 들어감
-    //   turl: turl,
-    // });
-
-    console.log("url : " + url);
-    console.log("turl : " + turl);
-    // 토스트 출력 내용과 재생할 비디오 URL값을 넘겨줌
-    window.Android.showToast(url, turl);
+    window.Android.showToast(url, turl, id);
     return "arr";
   };
 
   const onClick = () => {
-    // uploadModelUrl();
-    movecamera();
+    if (localStorage.getItem('UserId')) {
+      movecamera();
+    } else {
+      alert('로그인 먼저 해주세요')
+      navigate('/login')
+    }
   };
 
   // // realtime DB 에 turl 넣기
   // const uploadModelUrl = () => {};
 
-  const goTomypage = () => {
+  const goTomypage = (event) => {
+    event.stopPropagation();
     navigate(`/mypage/${uid}`);
   };
   return (
@@ -81,8 +74,8 @@ export default function CarouselSlide(props) {
         justifyContent: "center",
       }}
     >
-      <h3 className={classes.title}>{title}</h3>
-      <Card className={classes.card} onClick={onClick}>
+      <h3 className={classes.title} onClick={onClick}>{title}</h3>
+      <Card className={classes.card}>
         <div className={classes.circle} onClick={goTomypage}>
           <Avatar alt={profile_name} src={profile_src} />
         </div>

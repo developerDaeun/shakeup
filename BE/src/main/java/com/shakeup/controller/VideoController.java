@@ -100,7 +100,7 @@ public class VideoController {
         List<Videos> res = videoService.readMyCategoryVideo(videoMyCategoryRequest); // 나의 영상 가져오기
 
         if (videoMyCategoryRequest.getCategory() == 0) {
-            List<CopyVideo> res2 = copyVideoRepository.findByUid(videoMyCategoryRequest.getUid());
+            List<CopyVideo> res2 = copyVideoRepository.findByCopyUidAndCopy_Category(videoMyCategoryRequest.getUid(),videoMyCategoryRequest.getCategory());
 
             for (CopyVideo temp : res2) {
                 Users user_temp = userRepository.findByUid(temp.getOriginal().getUid()).get();
@@ -118,7 +118,7 @@ public class VideoController {
 
     @GetMapping(value = "/{uid}")
     public ResponseEntity<?> myBestScore(@PathVariable int uid) {
-        Optional<Videos> res = videoRepository.findFirstByUidOrderByScoreDesc(uid);
+        Optional<Videos> res = videoRepository.findFirstByUidAndCategoryOrderByScoreDesc(uid, 0);
         VideoAndUidResponse videoAndUidResponse = res.get().toEntity();
         videoAndUidResponse.setName(userRepository.findByUid(uid).get().getName());
 

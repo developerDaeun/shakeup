@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
-// import Thumbnails from '../Thumbnails'
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,24 +7,48 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(1),
     },
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
+  box: {
+    display: 'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    padding:'20px',
+    borderRadius: '20px',
+    marginBottom: '20px',
+    boxShadow: '0px 0px 5px gray',
+    backgroundColor: '#EEEEEE',
+  },
+  video: {
+    display: 'flex',
+    borderRadius: '20px',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    margin: '10px',
+  },
+  title: {
+
+  },
+  content: {
+    marginLeft: '20px',
+  }
 }));
 
 
-function Board2({user}) {
+function Board2({id}) {
   const [videos, setVideos] = useState([]);
-  const uid = user.uid
+  const [ranks, setRanks] = useState([]);
+  const uid = id
 
   const getVideos = () => {
-    // category, uid로 video 정보 가져오기
-    // uid는 링크의 params 값을 main에서 props로 가져와야함.
     const credentials = {
       category : 1,
       uid : uid
     }
     axios.post(`/video/read/mycategory`, credentials)
     .then(res => {
-      console.log(res.data)
       setVideos(res.data)
     })
     .catch(err =>{
@@ -33,28 +56,45 @@ function Board2({user}) {
     })    
   }  
 
+  const getRanking = () => {
+    axios.get(`/cup/read/${uid}`)
+    .then(res => {
+      setRanks(res.data)
+    })
+    .catch(err =>{
+      console.log(err)
+    })  
+  }
+
   useEffect(() => {
     getVideos();
-  }, []);
+    getRanking();
+  }, [uid]);
 
   const classes = useStyles();
 
   return (
-    <div>
-      <h1>월드컵 점수 표시</h1>      
-      <p>월드컵 총 참여 회수</p>
-      <p>{videos.length}회</p>
-      <hr/>
-      <h1>최근 참여 월드컵</h1>
-      {videos.map((video) => {
+    <div className={classes.root}>
+      <h1 className={classes.title}>🏆 월드컵 🏆</h1>
+      <h4 >총 참여 {videos.length}회</h4>
+      <h2>최근 참여 월드컵</h2>
+      {ranks.map((video) => {
+        if (video.videos2.category === 1) {
         return (
-          <div>
-          <p>{video.title}</p>
-          <video style={{ width:'100px', height:'30vh' }}
-          src={video.url}/>
-          </div>
+          <div className={classes.box}>
+            <h4 className={classes.content}>{video.cupname}</h4>
+            <div className={classes.video}>
+              <video src={video.videos2.url} 
+                poster={video.videos2.thumbnail} 
+                controls
+                style={{objectFit:'fill', width:'100%', textAlign:'center'}}
+              />
+            </div>
+            <h4 className={classes.content}>{video.videos2.title}</h4>
+            <h4 className={classes.content}>승률 : {(video.videos2.clickcnt / video.videos2.exposecnt).toFixed(1) * 100}%</h4>
+          </div>        
         )
-      })}
+      }})}
     </div>
   );
 }

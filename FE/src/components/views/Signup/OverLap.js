@@ -12,7 +12,8 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: '10px 0 0 0'
+    margin: '10px 0 0 0',
+    width: '120px'
   }
 }));
 
@@ -44,7 +45,7 @@ function Overlap({type, value, propFunction}) {
   const overlapTest = () => {
     if (vaildPass && inputVal.length > 5) {
       try {
-        axios.get(`http://114.129.238.28/user/${type}/${inputVal}`)
+        axios.get(`/user/${type}/${inputVal}`)
         .then((res) => {
           if (res.data === '성공') {
             // 중복검사가 완료되면 값을 내보내주고,
@@ -59,11 +60,10 @@ function Overlap({type, value, propFunction}) {
           console.log(err)
         })
       } catch(err) {
-        console.log('헤이')
         console.log(err)
       }
       } else {
-        alert('요구사항을 다시봐줘요')
+        alert('요구사항을 다시 확인해주세요')
       }
   }
   // 만약에 인풋값을 건드리면 다시 중복검사해야함

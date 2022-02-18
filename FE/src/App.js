@@ -22,12 +22,14 @@ import DanddaUploadComplete from "./components/views/dandda/danddaupload/DanddaU
 import FirebaseTest from "./components/views/firebase/uploadtest";
 import Mypage from "./components/views/mypage/MyPage";
 import WorldcupMain from "./components/views/worldcup/WorldcupMain";
-// import FirebaseUpload from './components/views/firebase/uploadtest';
 import WorldcupVote from "./components/views/worldcup/vote/Vote";
 import WorldcupResult from "./components/views/worldcup/WorldcupResult";
 import Worldcupparticipation from "./components/views/worldcup/Worldcupparticipation";
 import VideoDetail from "./components/views/VideoDetail/VideoDetail";
 import Danddaloading from "./components/views/dandda/danddaresult/Danddaloading";
+import Download from "./components/views/download/download.jsx";
+import UserDelete from "./components/views/Signup/Unregister.jsx";
+
 
 export const UserContext = createContext();
 
@@ -62,7 +64,7 @@ function App() {
       <BrowserRouter>
         <Sidebar />
         <Routes>
-          {/* <Route exact={true} path="/" element={<PrivateRoute component={Auth(MainPage)}/>}  /> */}
+          <Route exact={false} path="/download" element={<Download />} />
           <Route exact={true} path="/" element={<DanddaMain />} />
           <Route exact={true} path="/login" element={<LoginPage />} />
           <Route exact={true} path="/find" element={<Find />} />
@@ -73,7 +75,8 @@ function App() {
           <Route exact={true} path="/signup" element={<SignUp />} />
           <Route exact={true} path="/joinend" element={<JoinEnd />} />
           <Route exact={true} path="/signup/next" element={<SignUpNext />} />
-          <Route exact={true} path="/user/sujeong" element={<PutCredentials />} />
+          <Route exact={true} path="/user/delete" element={<UserDelete />} />
+          <Route exact={true} path="/user/update" element={<PutCredentials />} />
           <Route exact={true} path="/community/:id" element={<ArticleDetail />} />
           <Route exact={true} path="/:id" element={<DanddaResult />} />
           <Route exact={true} path="/:id/upload" element={<DanddaUpload />} />
@@ -82,7 +85,6 @@ function App() {
           <Route exact={true} path="/mypage/:id" element={<Mypage />} />
           <Route exact={true} path="/worldcup" element={<WorldcupMain />} />
           <Route exact={true} path="/worldcup/participation" element={<Worldcupparticipation />} />
-          {/* <Route exact={true} path="/firebase/upload" element={<FirebaseUpload/>} /> */}
           <Route exact={true} path="/worldcup/vote" element={<WorldcupVote />} />
           <Route exact={true} path="/worldcup/vote/result" element={<WorldcupResult />} />
           <Route exact={true} path="/danddaloading" element={<Danddaloading />} />
