@@ -330,7 +330,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 #### Burndown Chart
 
-![image](https://user-images.githubusercontent.com/38871826/154611372-0786af56-e022-4329-89fb-7b71be49ea80.png)
+<!-- ![image](https://user-images.githubusercontent.com/38871826/154611372-0786af56-e022-4329-89fb-7b71be49ea80.png) -->
 
 
 
