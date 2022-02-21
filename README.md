@@ -317,19 +317,12 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
   
 
  #### Backlog
-
-![image](https://user-images.githubusercontent.com/38871826/154611303-35247974-1302-4738-8e19-2b624fa63860.png)
-
-
+<!-- ![image](https://user-images.githubusercontent.com/38871826/154611303-35247974-1302-4738-8e19-2b624fa63860.png) -->
 
 #### Active Sprints
-
-![image](https://user-images.githubusercontent.com/38871826/154611346-059a4c8b-cd47-4219-8954-a0d4a9e2bffd.png)
-
-
+<!-- ![image](https://user-images.githubusercontent.com/38871826/154611346-059a4c8b-cd47-4219-8954-a0d4a9e2bffd.png) -->
 
 #### Burndown Chart
-
 <!-- ![image](https://user-images.githubusercontent.com/38871826/154611372-0786af56-e022-4329-89fb-7b71be49ea80.png) -->
 
 
@@ -360,7 +353,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image](https://user-images.githubusercontent.com/38871826/154611423-7bcb63b3-307f-48c0-b860-7994304d851f.png)
+  <!-- ![image](https://user-images.githubusercontent.com/38871826/154611423-7bcb63b3-307f-48c0-b860-7994304d851f.png) -->
 
 
 
@@ -370,7 +363,7 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
   
 
-  ![image](https://user-images.githubusercontent.com/38871826/154611440-c1389ba6-dc66-40b8-803b-fce88f6cfeca.png)
+  <!-- ![image](https://user-images.githubusercontent.com/38871826/154611440-c1389ba6-dc66-40b8-803b-fce88f6cfeca.png) -->
 
 
 
@@ -407,12 +400,6 @@ Gitlab Webhook을 설정하여 Jenkins의 **Gitlab trigger를 설정하였고,**
 
 
 ## 👬팀원 소개
-
-#### Who are we? ####
-
-`SSAFY 6기 구미 1반 3팀`
-
-
 
 __김다은__ 👑팀장
 
